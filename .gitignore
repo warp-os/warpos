@@ -1,9 +1,52 @@
-.venv/
+# Python
 __pycache__/
-*.pyc
-*.egg-info/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Distribution / packaging
 dist/
 build/
-.warpos/
-*.db
+*.egg-info/
+*.egg
+
+# Environment
 .env
+.env.local
+.env.*.local
+
+# Databases
+*.db
+*.sqlite3
+
+# WarpOS
+.warpos/
+
+# Type checking
+.mypy_cache/
+.pytype/
+
+# Linting
+.ruff_cache/
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
