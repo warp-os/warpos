@@ -1,37 +1,36 @@
-<p align="center">
-  <br/>
-  <img src="https://img.shields.io/pypi/v/warpos?color=blue&logo=pypi&logoColor=white&style=for-the-badge" alt="PyPI" />
-  <img src="https://img.shields.io/pypi/pyversions/warpos?color=blue&logo=python&logoColor=white&style=for-the-badge" alt="Python" />
-  <img src="https://img.shields.io/github/license/warp-os/warpos?color=green&style=for-the-badge" alt="License" />
-  <img src="https://img.shields.io/github/stars/warp-os/warpos?color=yellow&logo=github&style=for-the-badge" alt="GitHub Stars" />
-  <br/>
-  <br/>
-</p>
+<div align="center">
 
-<h1 align="center">
-  <pre>
+<br/>
+
+```
  ██╗    ██╗ █████╗ ██████╗ ██████╗  ██████╗ ███████╗
  ██║    ██║██╔══██╗██╔══██╗██╔══██╗██╔═══██╗██╔════╝
  ██║ █╗ ██║███████║██████╔╝██████╔╝██║   ██║███████╗
  ██║███╗██║██╔══██║██╔══██╗██╔══██╗██║   ██║╚════██║
  ╚███╔███╔╝██║  ██║██║  ██║██████╔╝╚██████╔╝███████║
   ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚══════╝
-  </pre>
-</h1>
+```
 
-<p align="center">
-  <strong>The open-source platform for AI agents.<br/>Write logic, deploy everything.</strong>
-</p>
+### The open-source platform for AI agents.
 
-<p align="center">
-  <a href="https://warpos.dev">Website</a> · <a href="https://github.com/warp-os/warpos">GitHub</a> · <a href="https://pypi.org/project/warpos/">PyPI</a>
-</p>
+**Write logic, deploy everything.**
+
+[![PyPI Version](https://img.shields.io/pypi/v/warpos.svg?style=flat-square&logo=pypi&logoColor=white&color=blue)](https://pypi.org/project/warpos/)
+[![Python](https://img.shields.io/pypi/pyversions/warpos.svg?style=flat-square&logo=python&logoColor=white&color=blue)](https://pypi.org/project/warpos/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![GitHub Stars](https://img.shields.io/github/stars/warp-os/warpos.svg?style=flat-square&logo=github&color=yellow)](https://github.com/warp-os/warpos/stargazers)
+
+[Website](https://warpos.dev) · [Docs](https://github.com/warp-os/warpos/tree/main/docs) · [PyPI](https://pypi.org/project/warpos/) · [Examples](https://github.com/warp-os/warpos/tree/main/examples)
+
+</div>
 
 ---
 
 ## What is WarpOS?
 
-WarpOS is a lightweight framework for building AI agents that actually work in production. It handles the messy parts — provider routing, tool orchestration, memory management, and server deployment — so you can focus on writing agent logic. Ship a working agent in minutes, not days.
+WarpOS is a lightweight framework for building AI agents that actually work in production. It handles the messy parts — provider routing, tool orchestration, memory management, and server deployment — so you can focus on writing agent logic.
+
+Ship a working agent in minutes, not days.
 
 ```python
 from warpos import Agent, tool
@@ -45,14 +44,16 @@ agent = Agent(
     name="WeatherBot",
     model="gpt-4o",
     tools=[get_weather],
-    instructions="You are a helpful weather assistant."
+    instructions="You are a helpful weather assistant.",
 )
 
 response = agent.run("What's the weather in San Francisco?")
 print(response)
 ```
 
-## ⚡ Quick Start
+---
+
+## Quick Start
 
 ```bash
 pip install warpos
@@ -73,60 +74,62 @@ agent = Agent(name="MyAgent", model="gpt-4o")
 print(agent.run("Hello! What can you do?"))
 ```
 
-## 🚀 Features
-
-- **Multi-provider support** — OpenAI, Anthropic, Groq, DeepSeek, Ollama, Cerebras, and more
-- **Tool calling** — Decorate any Python function as a tool with `@tool`
-- **Memory** — Built-in conversation memory with persistent storage options
-- **CLI** — `warp init` scaffolds a project, `warp serve` starts an API server
-- **Streaming** — Real-time token streaming for all providers
-- **Type-safe** — Full type hints and Pydantic model support
-- **Lightweight** — Minimal dependencies, fast startup, production-ready
-
-## 🔌 Providers
-
-WarpOS supports multiple LLM providers out of the box. Swap providers with one line:
-
-| Provider | Models | Streaming | Tool Calling |
-| --- | --- | --- | --- |
-| **OpenAI** | GPT-4o, GPT-4, GPT-3.5 | ✅ | ✅ |
-| **Anthropic** | Claude 3.5 Sonnet, Claude 3 Opus | ✅ | ✅ |
-| **Groq** | Llama 3, Mixtral | ✅ | ✅ |
-| **DeepSeek** | DeepSeek-V2, DeepSeek Coder | ✅ | ✅ |
-| **Ollama** | Llama 3, Mistral, any local model | ✅ | ✅ |
-| **Cerebras** | Llama 3, custom models | ✅ | ✅ |
-
-```python
-# Switch providers easily
-agent = Agent(name="Bot", model="anthropic/claude-3-5-sonnet-20241022")
-agent = Agent(name="Bot", model="groq/llama3-70b-8192")
-agent = Agent(name="Bot", model="ollama/llama3")
-```
-
-## 🖥️ CLI
-
-WarpOS includes a CLI for scaffolding and running agents:
+Or serve with a chat UI:
 
 ```bash
-# Create a new project
 warp init my-agent
-
-# Start the development server
+cd my-agent
 warp serve
-
-# Run with hot reload
-warp serve --reload
+# → http://localhost:3000
 ```
 
-## 🏗️ Architecture
+---
 
-WarpOS is built around five core components:
+## Features
 
-- **Agent** — The orchestrator. Takes instructions, manages context, calls tools, returns responses.
-- **Tools** — Python functions exposed to the agent via the `@tool` decorator. Type-hinted, self-documenting.
-- **Memory** — Conversation history and long-term storage. Pluggable backends (in-memory, SQLite, Redis).
-- **Provider** — Abstraction layer over LLM APIs. Handles routing, retries, rate limits, and streaming.
-- **Server** — HTTP server with REST API and WebSocket support for real-time agent interactions.
+- **Multi-provider** — OpenAI, Anthropic, Groq, DeepSeek, Ollama, Cerebras
+- **Tool calling** — Decorate any Python function with `@tool`
+- **Memory** — Built-in persistent conversation memory (SQLite + FTS5)
+- **Chat UI** — Auto-generated WebSocket chat interface
+- **CLI** — `warp init` scaffolds, `warp serve` deploys
+- **Type-safe** — Full type hints, Pydantic support
+- **Lightweight** — Minimal dependencies, fast startup
+
+---
+
+## Providers
+
+Swap providers with one line:
+
+```python
+agent = Agent(name="Bot", provider="openai", model="gpt-4o")
+agent = Agent(name="Bot", provider="anthropic", model="claude-sonnet-4-20250514")
+agent = Agent(name="Bot", provider="groq", model="llama3-70b-8192")
+agent = Agent(name="Bot", provider="ollama", model="llama3")
+```
+
+| Provider | Env Variable | Base URL |
+|---|---|---|
+| OpenAI | `OPENAI_API_KEY` | `api.openai.com` |
+| Anthropic | `ANTHROPIC_API_KEY` | `api.anthropic.com` |
+| Groq | `GROQ_API_KEY` | `api.groq.com` |
+| DeepSeek | `DEEPSEEK_API_KEY` | `api.deepseek.com` |
+| Cerebras | `CEREBRAS_API_KEY` | `api.cerebras.ai` |
+| Ollama | — | `localhost:11434` |
+
+---
+
+## CLI
+
+```bash
+warp init my-agent     # scaffold a new project
+warp serve agent.py    # serve with chat UI on :3000
+warp serve -p 8080     # custom port
+```
+
+---
+
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -138,20 +141,28 @@ WarpOS is built around five core components:
                       │
                ┌──────┴──────┐
                │   Server    │
+               │  (FastAPI)  │
                └─────────────┘
 ```
 
-## 📖 Examples
+- **Agent** — Orchestrates context, tools, and provider calls
+- **Tools** — Python functions exposed via `@tool` decorator
+- **Memory** — SQLite + FTS5 persistent conversation storage
+- **Provider** — Unified LLM routing with OpenAI/Anthropic compatibility
+- **Server** — FastAPI + WebSocket with auto-generated chat UI
 
-Check out the `examples/` directory:
+---
 
-- **[Advanced Agent](examples/advanced.py)** — Multiple tools, custom provider, memory
-- **[Discord Bot](examples/discord-bot.py)** — Build a Discord bot with WarpOS
-- **[Telegram Bot](examples/telegram-bot.py)** — Build a Telegram bot with WarpOS
+## Examples
 
-## 🤝 Contributing
+- **[Basic Agent](examples/basic.py)** — Simple agent with tools
+- **[Advanced Agent](examples/advanced.py)** — Multiple tools, memory, custom provider
+- **[Discord Bot](examples/discord-bot.py)** — Discord integration
+- **[Telegram Bot](examples/telegram-bot.py)** — Telegram integration
 
-We welcome contributions of all kinds. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup instructions, coding standards, and how to submit a PR.
+---
+
+## Contributing
 
 ```bash
 git clone https://github.com/warp-os/warpos.git
@@ -160,12 +171,18 @@ pip install -e ".[dev]"
 pytest
 ```
 
-## 📄 License
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-WarpOS is released under the [MIT License](LICENSE).
+---
 
-## ⭐ Star History
+## License
 
-If you find WarpOS useful, consider giving it a star on GitHub!
+MIT — see [LICENSE](LICENSE).
 
-[![Star History Chart](https://api.star-history.com/svg?repos=warp-os/warpos&type=Date)](https://star-history.com/#warp-os/warpos&Date)
+---
+
+<div align="center">
+
+**[warpos.dev](https://warpos.dev)**
+
+</div>
