@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: warpos-api
+    runtime: python
+    plan: free
+    buildCommand: pip install warpos
+    startCommand: python -c "from examples.basic import agent; agent.serve(host='0.0.0.0', port=10000)"
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      key: PYTHON_VERSION
+        value: "3.11.15"
